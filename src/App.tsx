@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import './global.css'
 import Pagination from './components/Pagination';
 import { FormatPhone } from './hooks/format';
-import { Label, TextInput } from 'flowbite-react';
+import { Label } from 'flowbite-react';
 
 
 
@@ -15,9 +15,9 @@ export const App = () => {
 
 
 
-  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfLastPost = postsPerPage * currentPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = data.splice(0, 1);
 
   const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
@@ -34,7 +34,7 @@ export const App = () => {
 
   return <>
     <div className="container mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 pb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-5">
         {(data.map((item, index) => {
           return (
             <div key={index} className=" bg-[#374151] w-full max-w-sm  border border-slate-600 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -149,7 +149,7 @@ export const App = () => {
       </div>
       <div className='flex p-8 rounded'>
         <Pagination
-
+          currentPosts={currentPosts.length}
           postsPerPage={postsPerPage}
           totalPosts={data?.length}
           paginate={paginate}
