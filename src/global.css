@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 body {
-  height: 100vh;
+  margin: auto;
+  padding: auto;
   @apply bg-[#111827] text-zinc-100;
 }
