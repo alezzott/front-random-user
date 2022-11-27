@@ -31,11 +31,15 @@ export const App = () => {
       }
     }
     fetchData();
-
-    setIsLoading(false)
     return () => controller.abort()
 
   }, []);
+
+  if (isLoading) {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }
 
 
 
@@ -49,18 +53,18 @@ export const App = () => {
   return <>
     <div className="container mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-5">
-
         {isLoading ? (
-          <div className='flex  container items-center content-center w-screen h-screen'>
+          <div className='flex  container items-center content-center w-screen h-screen' >
             <DotWave
-              size={47}
+              size={90}
               speed={1}
               color="yellow"
             />
           </div>
-        ) : (
-          CurrentPosts.map((item: any, index: number) => {
-            return (
+
+        ) : (CurrentPosts.map((item: any, index: number) => {
+          return (
+            <>
               <div key={index} className=" bg-[#374151] w-full max-w-sm  border border-slate-600 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <div className="flex flex-col items-center pb-10">
                   <img className="mt-4 w-24 h-24 mb-3 rounded-full shadow-lg" src={item.picture.large} alt="Bonnie image" />
@@ -73,8 +77,8 @@ export const App = () => {
                       <button
                         className="block border-solid border-2 border-slate-600 text-white bg-[#374151] hover:bg-[#111827] focus:ring-4 focus:outline-non font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button"
                         onClick={() => {
-                          setCurrentUser(item)
-                          setShowModal(true)
+                          setCurrentUser(item);
+                          setShowModal(true);
                         }}
                       >
                         Details
@@ -159,27 +163,33 @@ export const App = () => {
                                     <div className='text-white'>
                                       {currentUser.location.street.name}, {currentUser.location.street.number} / {currentUser.location.city}, {currentUser.location.country}
                                     </div>
+
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          </div >
                         </>
                       ) : null}
                     </>
-                  </div>
-                </div>
-              </div>
-            )
-          }))}
-      </div>
-      <div className='flex p-8'>
-        <Pagination
-          postsPerPage={postsPerPage}
-          totalPosts={apiData?.length}
-          paginate={paginate}
-        />
-      </div>
-    </div >
+                  </div >
+                </div >
+              </div >
+            </>
+          )
+        }))}
+        {isLoading ? (
+          setIsLoading
+        ) : (
+          <div className='flex pt-4'>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={apiData?.length}
+              paginate={paginate}
+            />
+          </div>
+        )}
+      </div >
+    </div>
   </>
 }
