@@ -54,9 +54,9 @@ export const App = () => {
     <div className="container mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-5">
         {isLoading ? (
-          <div className='flex  container items-center content-center w-screen h-screen' >
+          <div className='flex container items-center content-center w-screen h-screen' >
             <DotWave
-              size={90}
+              size={47}
               speed={1}
               color="yellow"
             />
@@ -181,7 +181,7 @@ export const App = () => {
         {isLoading ? (
           setIsLoading
         ) : (
-          <div className='flex pt-4'>
+          <div className='flex p-8'>
             <Pagination
               postsPerPage={postsPerPage}
               totalPosts={apiData?.length}
