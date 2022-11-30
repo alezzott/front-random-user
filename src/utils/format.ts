@@ -15,7 +15,7 @@ export const DateFormat = (Date: string) => {
   return resultDate;
 };
 
-export const FormatPhone = (Phone: string) => {
+export const FormatPhone = (Phone: String) => {
   let resultPhone = "";
   const initSplitPhone = Phone.split("-");
 
