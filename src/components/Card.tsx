@@ -3,7 +3,7 @@ import { User } from '../models/PageModel';
 import { FormatPhone } from '../utils/format'
 import { ModalComponent } from './Modal';
 
-export function CardComponent({ item, index }: any) {
+export function Card({ item, index }: any) {
     const [showModal, setShowModal] = useState(false)
     const [currentUser, setCurrentUser] = useState<User>()
 
