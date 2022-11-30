@@ -2,8 +2,8 @@ import { SetStateAction } from 'react';
 import { User } from './UserModel';
 
 export interface PageProps {
-  totalPosts: any;
-  postsPerPage: any;
+  totalPosts: number;
+  postsPerPage: number;
   paginate: any;
 }
 
@@ -14,5 +14,5 @@ export interface ModalProps {
 
 export interface CardProps {
   item: any;
-  index: any;
+  index: number;
 }
