@@ -11,3 +11,8 @@ export interface ModalProps {
   setShowModal: React.Dispatch<SetStateAction<boolean>>;
   currentUser: User | undefined;
 }
+
+export interface CardProps {
+  item: any;
+  index: any;
+}
