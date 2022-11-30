@@ -3,7 +3,7 @@ import { DotWave } from '@uiball/loaders'
 
 import { api } from './utils/api'
 import { Pagination } from './components/Pagination';
-import { User } from './models/PageModel';
+import { User } from './models/UserModel';
 import { Card } from './components/Card';
 
 import './global.css'
