@@ -1,5 +1,5 @@
-import { SetStateAction } from "react";
-import { User } from "./UserModel";
+import { SetStateAction } from 'react';
+import { User } from './UserModel';
 
 export interface PageProps {
   totalPosts: any;
