@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { User } from '../models/PageModel';
+import { CardProps } from '../models/PageModel';
+import { User } from '../models/UserModel';
 import { FormatPhone } from '../utils/format'
 import { ModalComponent } from './Modal';
 
-export function Card({ item, index }: any) {
+export function Card({ item, index }: CardProps) {
     const [showModal, setShowModal] = useState(false)
     const [currentUser, setCurrentUser] = useState<User>()
 
