@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-const Pagination = (props: any) => {
+export const Pagination = (props: any) => {
     const [activeNumber, setActiveNumber] = useState<number>(1)
 
     const pageNumbers = [
@@ -18,15 +18,15 @@ const Pagination = (props: any) => {
 
     return <>
         {pageNumbers.map(Number => (
-            <div key={Number} className='pag-div' >
-                <button onClick={() => handleClick(Number)} className={`p-8  rounded-md py-[length:0.56rem] px-3 leading-tight cursor-pointer  border border-slate-600 text-white hover:bg-[#374151] 
+            <div key={Number} className='pag-div px-[3px]'  >
+                <button onClick={() => handleClick(Number)} className={`p-8 rounded-md py-[length:0.56rem] px-3 leading-tight cursor-pointer  border border-slate-600 text-white hover:bg-[#374151] 
 
                 ${Number === activeNumber ? "bg-[#12212]" : "bg-[#1f2937]"}`}>
                     {Number}
                 </button>
+
+
             </div>
         ))}
     </>
 };
-
-export default Pagination;
