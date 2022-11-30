@@ -1,13 +1,9 @@
 import { Label } from "flowbite-react";
 import { SetStateAction } from "react";
-import { User } from "../models/PageModel";
+import { ModalProps } from "../models/PageModel";
+import { FormatPhone } from "../utils/format";
 
-interface IProps {
-    setShowModal: React.Dispatch<SetStateAction<boolean>>;
-    currentUser: User | undefined
-}
-
-export function ModalComponent({ setShowModal, currentUser }: IProps) {
+export function ModalComponent({ setShowModal, currentUser }: ModalProps) {
     return (
         <div className="flex justify-center overflow-x-hidden overflow-y-auto fixed inset-14 outline-none focus:outline-none">
             <div className=" flex max-w-2xl text-white ">
@@ -69,7 +65,7 @@ export function ModalComponent({ setShowModal, currentUser }: IProps) {
                                 Cellphone:
                             </Label>
                             <div className="text-gray-300">
-                                {currentUser?.cell}
+                                {FormatPhone(currentUser?.cell!)}
                             </div>
                         </div>
                         <div className="text-gray-300">
