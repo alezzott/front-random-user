@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { PageProps } from '../models/PageModel';
 
 export const Pagination = ({
-  paginate,
   totalPosts,
   postsPerPage,
+  paginateIndex,
 }: PageProps) => {
   const [activeNumber, setActiveNumber] = useState(1);
 
@@ -15,8 +15,8 @@ export const Pagination = ({
   }
 
   function handleClick(number: number) {
-    paginate(number);
     setActiveNumber(number);
+    paginateIndex(number);
   }
 
   return (
