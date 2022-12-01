@@ -14,5 +14,6 @@ export interface ModalProps {
 
 export interface CardProps {
   item: any;
+  currentPosts: any;
   index: number;
 }
