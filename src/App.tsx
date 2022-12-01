@@ -49,21 +49,19 @@ export const App = ({ item, index }: CardProps) => {
   );
 
   const paginate = (pageNumber: React.SetStateAction<number>) =>
-    void setCurrentPage(pageNumber);
+    setCurrentPage(pageNumber);
 
   return (
     <div className="container mx-auto">
       {isLoading ? (
-        <div>
-          <Loading />
-        </div>
+        <Loading />
       ) : (
         <>
           <Card currentPosts={currentPosts} item={item} index={index} />
           <Pagination
             postsPerPage={postsPerPage}
             totalPosts={apiData?.length}
-            paginate={paginate}
+            paginateIndex={paginate}
           />
         </>
       )}
