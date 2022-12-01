@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { DotWave } from '@uiball/loaders';
 
 import { api } from './utils/api';
 import { Pagination } from './components/Pagination';
@@ -8,6 +7,7 @@ import { Card } from './components/Card';
 
 import './global.css';
 import { CardProps } from './models/PageModel';
+import { Loading } from './components/Loading';
 
 export const App = ({ item, index }: CardProps) => {
   const [data, setData] = useState<User[]>([]);
@@ -41,28 +41,6 @@ export const App = ({ item, index }: CardProps) => {
     }, 1500);
   }
 
-  function handlePaginate() {
-    return (
-      <>
-        {isLoading ? (
-          setIsLoading
-        ) : (
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={apiData?.length}
-            paginate={paginate}
-          />
-        )}
-      </>
-    );
-  }
-
-  function handleIsLoading() {
-    return <>
-      <DotWave size={47} speed={1} color="yellow" />
-    </>
-  }
-
   const indexOfLastPost = postsPerPage * currentPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts: User[] = apiData?.slice(
@@ -76,13 +54,19 @@ export const App = ({ item, index }: CardProps) => {
   return (
     <div className="container mx-auto">
       {isLoading ? (
-        <div className='flex justify-center items-center h-screen'>
-          {handleIsLoading()}
+        <div>
+          <Loading />
         </div>
       ) : (
-        <Card currentPosts={currentPosts} item={item} index={index} />
+        <>
+          <Card currentPosts={currentPosts} item={item} index={index} />
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={apiData?.length}
+            paginate={paginate}
+          />
+        </>
       )}
-      <div className="sm:mx-4 sm:px-4 py-4 p-4 flex">{handlePaginate()}</div>
-    </div >
+    </div>
   );
 };
