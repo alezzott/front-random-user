@@ -1,11 +1,11 @@
 import { SetStateAction } from 'react';
 import { User } from './UserModel';
 
-export interface PageProps {
+export type PageProps = {
   totalPosts: number;
   postsPerPage: number;
-  paginate: any;
-}
+  paginateIndex: unknown;
+};
 
 export interface ModalProps {
   setShowModal: React.Dispatch<SetStateAction<boolean>>;
@@ -13,7 +13,7 @@ export interface ModalProps {
 }
 
 export interface CardProps {
-  item: any;
-  currentPosts: any;
+  item: unknown;
   index: number;
+  currentPosts: unknown;
 }
