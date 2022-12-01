@@ -57,7 +57,5 @@ export function Card({ currentPosts }: CardProps) {
         </div>
       ))}
     </div>
-
-
   );
 }
