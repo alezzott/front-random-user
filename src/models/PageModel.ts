@@ -1,11 +1,11 @@
 import { SetStateAction } from 'react';
 import { User } from './UserModel';
 
-export type PageProps = {
+export interface PageProps {
   totalPosts: number;
   postsPerPage: number;
   paginateIndex: (value: number) => number | undefined;
-};
+}
 
 export interface ModalProps {
   setShowModal: React.Dispatch<SetStateAction<boolean>>;

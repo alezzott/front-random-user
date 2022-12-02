@@ -5,6 +5,6 @@ import './global.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <App item={undefined} index={0} currentPosts={null} />
   </React.StrictMode>
 );
