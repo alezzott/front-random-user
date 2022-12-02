@@ -4,7 +4,7 @@ import { User } from './UserModel';
 export type PageProps = {
   totalPosts: number;
   postsPerPage: number;
-  paginateIndex: unknown;
+  paginateIndex: (value: number) => number | undefined;
 };
 
 export interface ModalProps {
@@ -15,5 +15,5 @@ export interface ModalProps {
 export interface CardProps {
   item: unknown;
   index: number;
-  currentPosts: unknown;
+  currentPosts: User[] | null;
 }
