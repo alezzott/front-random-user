@@ -14,9 +14,9 @@ export const Pagination = ({
     pageNumbers.push(index);
   }
 
-  function handleClick(number: number) {
-    setActiveNumber(number);
-    paginateIndex(number);
+  function handleClick(active: number) {
+    setActiveNumber(active);
+    paginateIndex(active);
   }
 
   return (
