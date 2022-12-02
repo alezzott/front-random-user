@@ -24,7 +24,8 @@ export function Card({ currentPosts }: CardProps) {
             <img
               className="mt-4 w-24 h-24 mb-3 rounded-full shadow-lg"
               src={item.picture.large}
-              alt="Bonnie image"
+              alt={item.name.first}
+              title="Random User Title"
             />
             <h5 className="mb-1 text-xl font-medium">
               {item.name.first} {item.name.last}
