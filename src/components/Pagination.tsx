@@ -21,7 +21,7 @@ export const Pagination = ({
 
   return (
     <>
-      <div className="sm:mx-4 sm:px-4 py-4 p-4 flex">
+      <div className="sm:mx-4 sm:px-4 py-4  p-4 flex items-center justify-center static">
         {pageNumbers.map((index) => (
           <div key={index} className="pag-div px-[3px]">
             <button
