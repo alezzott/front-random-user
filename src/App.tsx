@@ -49,7 +49,7 @@ export const App = ({ item, index }: CardProps) => {
   );
 
   const paginate = (pageNumber: React.SetStateAction<number>) =>
-    setCurrentPage(pageNumber);
+    void setCurrentPage(pageNumber);
 
   return (
     <div className="container mx-auto">
