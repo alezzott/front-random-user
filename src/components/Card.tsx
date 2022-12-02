@@ -15,7 +15,7 @@ export function Card({ currentPosts }: CardProps) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-5">
-      {currentPosts.map((item: User, index: number) => (
+      {currentPosts?.map((item: User, index: number) => (
         <div
           key={index}
           className=" bg-[#374151] w-full max-w-sm  border border-slate-600 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
