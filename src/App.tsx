@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 import { api } from './utils/api';
+import { getAllPosts, getPageNumber } from './utils/post';
 import { Pagination } from './components/Pagination';
 import { User } from './models/UserModel';
 import { Card } from './components/Card';
 
 import './global.css';
-import { CardProps } from './models/PageModel';
+import { CardProps, PageProps } from './models/PageModel';
 import { Loading } from './components/Loading';
+import { getLoadTime } from './utils/loading';
 
 export const App = ({ item, index }: CardProps) => {
   const [data, setData] = useState<User[]>([]);
@@ -31,25 +33,14 @@ export const App = ({ item, index }: CardProps) => {
         console.error(err);
       }
     };
+    getLoading;
     fetchData();
     return () => controller.abort();
   }, []);
 
-  if (isLoading) {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-  }
-
-  const indexOfLastPost = postsPerPage * currentPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts: User[] = apiData?.slice(
-    indexOfFirstPost,
-    indexOfLastPost
-  );
-
-  const paginate = (pageNumber: React.SetStateAction<number>) =>
-    void setCurrentPage(pageNumber);
+  const currentPosts = getAllPosts({ apiData, postsPerPage, currentPage });
+  const getPage = getPageNumber({ setCurrentPage });
+  const getLoading = getLoadTime({ isLoading, setIsLoading });
 
   return (
     <div className="container mx-auto">
@@ -61,7 +52,7 @@ export const App = ({ item, index }: CardProps) => {
           <Pagination
             postsPerPage={postsPerPage}
             totalPosts={apiData?.length}
-            paginateIndex={paginate}
+            paginateIndex={getPage}
           />
         </>
       )}
