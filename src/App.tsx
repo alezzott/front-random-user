@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 import { api } from './utils/api';
 import { getAllPosts, getPageNumber } from './utils/post';
@@ -7,7 +7,7 @@ import { User } from './models/UserModel';
 import { Card } from './components/Card';
 
 import './global.css';
-import { CardProps, PageProps } from './models/PageModel';
+import { CardProps } from './models/PageModel';
 import { Loading } from './components/Loading';
 import { getLoadTime } from './utils/loading';
 
@@ -43,19 +43,21 @@ export const App = ({ item, index }: CardProps) => {
   const getLoading = getLoadTime({ isLoading, setIsLoading });
 
   return (
-    <div className="container mx-auto">
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <Card currentPosts={currentPosts} item={item} index={index} />
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={apiData?.length}
-            paginateIndex={getPage}
-          />
-        </>
-      )}
-    </div>
+    <main id="users">
+      <section className="container mx-auto">
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <Card currentPosts={currentPosts} item={item} index={index} />
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={apiData?.length}
+              paginateIndex={getPage}
+            />
+          </>
+        )}
+      </section>
+    </main>
   );
 };
