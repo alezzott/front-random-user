@@ -22,7 +22,7 @@ export const Pagination = ({
   return (
     <>
       <aside className="nav">
-        <div className="sm:mx-4 sm:px-4 py-4  p-4 flex items-center justify-center static">
+        <section className="sm:mx-4 sm:px-4 py-4  p-4 flex items-center justify-center static">
           {pageNumbers.map((index) => (
             <section key={index} className="pag-div px-[3px]">
               <button
@@ -34,7 +34,7 @@ export const Pagination = ({
               </button>
             </section>
           ))}
-        </div>
+        </section>
       </aside>
     </>
   );
