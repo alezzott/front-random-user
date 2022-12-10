@@ -63,9 +63,7 @@ export function ModalBody({ currentUser }: ModalProps) {
             Email:
           </p>
           <p className="rounded-lg flex text-gray-50 font-Roboto tracking-wide">
-            <a href={'mailto:' + currentUser?.email}>
-              {currentUser?.email}
-            </a>
+            <a href={'mailto:' + currentUser?.email}>{currentUser?.email}</a>
           </p>
         </section>
         <section className="" aria-describedby="user">
@@ -93,11 +91,13 @@ export function ModalBody({ currentUser }: ModalProps) {
             Endereço:
           </h1>
           <p className="flex justify-center text-gray-50 font-Roboto tracking-wide">
-            {currentUser?.location.street.name}, {currentUser?.location.street.number}, {currentUser?.location.city}, {currentUser?.location.country}
+            {currentUser?.location.street.name},{' '}
+            {currentUser?.location.street.number}, {currentUser?.location.city},{' '}
+            {currentUser?.location.country}
           </p>
         </section>
         <section className="flex items-center p-2 space-x-2  border-gray-200 rounded-b dark:border-gray-600" />
       </article>
     </>
-  )
+  );
 }
