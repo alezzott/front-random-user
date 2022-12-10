@@ -10,6 +10,8 @@ export interface PageProps {
 export interface ModalProps {
   setShowModal: React.Dispatch<SetStateAction<boolean>>;
   currentUser: User | undefined;
+  closeDropdown: any;
+  refIs: any;
 }
 
 export interface CardProps {
