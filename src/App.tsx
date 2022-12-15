@@ -10,10 +10,9 @@ import './global.css';
 import { CardProps } from './models/PageModel';
 import { Loading } from './components/Loading';
 import { getLoadTime } from './utils/loading';
-import { InputSearch } from './components/Search';
 
 
-export const App = ({ item, index }: CardProps) => {
+export const App = ({ item, index, isSearch }: CardProps) => {
   const [data, setData] = useState<User[]>([]);
   const [apiData, setApiData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,8 +50,8 @@ export const App = ({ item, index }: CardProps) => {
           <Loading />
         ) : (
           <>
-            <InputSearch />
-            <Card currentPosts={currentPosts} item={item} index={index} />
+            {/* <InputSearch data={data} /> */}
+            <Card currentPosts={currentPosts} item={item} index={index} isSearch={isSearch} />
             <Pagination
               postsPerPage={postsPerPage}
               totalPosts={apiData?.length}
