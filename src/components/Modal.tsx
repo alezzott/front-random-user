@@ -5,11 +5,14 @@ import { ModalTop, ModalBody } from './ModalStyled';
 export function ModalComponent({ setShowModal, currentUser }: ModalProps) {
   return (
     <>
-      <section className="backdrop-blur-sm backdrop-grayscale-0 backdrop-opacity-60 fixed top-0 left-0 right-0 z-50 justify-center flex w-full p-4 overflow-x-hidden overflow-y-auto h-modal md:h-full">
-        <section className=" relative w-full h-full max-w-md md:h-auto">
-          <article className="border border-gray-700 relative bg-[#1f2937] rounded-lg shadow dark:bg-gray-700">
-            <ModalTop currentUser={currentUser} setShowModal={setShowModal} />
-            <ModalBody currentUser={currentUser} setShowModal={setShowModal} />
+      <section
+        onClick={() => setShowModal(false)}
+        className="z-[50] fixed backdrop-blur-sm backdrop-grayscale-0 backdrop-opacity-60 top-0 left-0 right-0  justify-center flex w-full p-4 overflow-x-hidden overflow-y-auto h-modal md:h-full">
+        <section className="z-[100] w-full h-full max-w-md md:h-auto">
+          <article
+            className="border border-gray-700 bg-[#1f2937] rounded-lg shadow dark:bg-gray-700">
+            <ModalTop currentUser={currentUser} setShowModal={setShowModal} closeDropdown={undefined} refIs={undefined} />
+            <ModalBody currentUser={currentUser} setShowModal={setShowModal} closeDropdown={undefined} refIs={undefined} />
           </article>
         </section>
       </section>
