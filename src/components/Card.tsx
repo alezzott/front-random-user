@@ -51,8 +51,7 @@ export function Card({ currentPosts }: CardProps) {
                 {showModal ? (
                   <ModalComponent
                     setShowModal={setShowModal}
-                    currentUser={currentUser}
-                  />
+                    currentUser={currentUser} closeDropdown={undefined} refIs={undefined} />
                 ) : null}
               </>
             </section>
