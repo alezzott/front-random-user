@@ -4,13 +4,13 @@ import { User } from '../models/UserModel';
 
 import { Card } from './Card';
 
-export function InputSearch({ data, currentPosts }: CardProps) {
+export function InputSearch({ isLoading, data, index, item, currentPosts }: CardProps) {
   const [isSearch, setIsSearch] = useState('');
-  const [filteredData, setFilteredData] = useState<User[]>(data);
+  const [filteredData] = useState<User[]>(data);
 
   console.log('pesquisa', isSearch);
 
-  const filtered = data.filter(({ name }: User) =>
+  const filtered = currentPosts.filter(({ name }: User) =>
     name.first.toLowerCase().trim().includes(isSearch)
   );
 
@@ -70,12 +70,12 @@ export function InputSearch({ data, currentPosts }: CardProps) {
       </form>
       <div>
         <Card
-          currentPosts={filtered}
           data={data}
           isSearch={isSearch}
-          item={undefined}
-          index={0}
-          isLoading={undefined}
+          item={item}
+          index={index}
+          isLoading={isLoading}
+          currentPosts={filtered}
         />
       </div>
     </div>

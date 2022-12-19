@@ -52,12 +52,13 @@ export const App = ({ isSearch, item, index }: CardProps) => {
           <>
             <InputSearch
               currentPosts={currentPosts}
-              data={data}
               item={item}
               index={index}
               isSearch={isSearch}
               isLoading={undefined}
+              data={data}
             />
+            {/* <Card currentPosts={currentPosts} item={item} data={data} index={index} isSearch={isSearch} isLoading={isLoading} /> */}
             <Pagination
               postsPerPage={postsPerPage}
               totalPosts={apiData?.length}
