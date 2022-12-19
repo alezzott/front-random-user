@@ -1,5 +1,6 @@
 import { ModalProps } from '../models/PageModel';
 import { UserCircleIcon } from '@heroicons/react/24/solid';
+import { useState } from 'react';
 
 export function ModalTop({ setShowModal }: ModalProps) {
   return (
@@ -84,16 +85,16 @@ export function ModalBody({ currentUser }: ModalProps) {
           <h1 className="flex justify-center mx-2 text-slate-400 font-Roboto tracking-wide">
             UUID:
           </h1>
-          <p className="flex justify-center text-gray-50 font-Roboto tracking-wide">
+          <p className="flex justify-center text-center text-gray-50 font-Roboto tracking-wide">
             {currentUser?.login.uuid}
           </p>
           <h1 className="flex justify-center mx-2 text-slate-400 font-Roboto tracking-wide">
             Endereço:
           </h1>
-          <p className="flex justify-center text-gray-50 font-Roboto tracking-wide">
+          <p className="flex justify-center text-center items-center text-gray-50 font-Roboto tracking-wide">
             {currentUser?.location.street.name},{' '}
             {currentUser?.location.street.number}, {currentUser?.location.city},{' '}
-            {currentUser?.location.country}
+            {currentUser?.location.country},
           </p>
         </section>
         <section className="flex items-center p-2 space-x-2  border-gray-200 rounded-b dark:border-gray-600" />
