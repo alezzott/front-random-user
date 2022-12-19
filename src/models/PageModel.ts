@@ -15,7 +15,10 @@ export interface ModalProps {
 }
 
 export interface CardProps {
-  item: unknown;
+  item: User | undefined;
   index: number;
   currentPosts: User[] | null;
+  data: User[];
+  isSearch: any;
+  isLoading: any;
 }
