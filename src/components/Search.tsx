@@ -10,9 +10,11 @@ export function InputSearch({ data, currentPosts }: CardProps) {
 
   console.log('pesquisa', isSearch);
 
-  const filtered = data.filter(({ name }: User) => name.first.toLowerCase().trim().includes(isSearch))
+  const filtered = data.filter(({ name }: User) =>
+    name.first.toLowerCase().trim().includes(isSearch)
+  );
 
-  console.log('filter', filteredData)
+  console.log('filter', filteredData);
 
   return (
     <div className="grid grid-cols-1 m/t-5 m-4 items-end">
@@ -67,14 +69,14 @@ export function InputSearch({ data, currentPosts }: CardProps) {
         </button>
       </form>
       <div>
-
-
         <Card
           currentPosts={filtered}
           data={data}
-          isSearch={isSearch} item={undefined} index={0} isLoading={undefined} />
-
-
+          isSearch={isSearch}
+          item={undefined}
+          index={0}
+          isLoading={undefined}
+        />
       </div>
     </div>
   );
