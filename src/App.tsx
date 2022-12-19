@@ -3,16 +3,13 @@ import { useState, useEffect } from 'react';
 import { api } from './utils/api';
 import { getAllPosts, getPageNumber } from './utils/post';
 import { Pagination } from './components/Pagination';
-import { User } from './models/UserModel';
-import { Card } from './components/Card';
 
 import './global.css';
-import { CardProps } from './models/PageModel';
 import { Loading } from './components/Loading';
 import { getLoadTime } from './utils/loading';
 import { InputSearch } from './components/Search';
 
-export const App = ({ isSearch, item, index }: CardProps) => {
+export const App = () => {
   const [data, setData] = useState([]);
   const [apiData, setApiData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,15 +47,7 @@ export const App = ({ isSearch, item, index }: CardProps) => {
           <Loading />
         ) : (
           <>
-            <InputSearch
-              currentPosts={currentPosts}
-              item={item}
-              index={index}
-              isSearch={isSearch}
-              isLoading={undefined}
-              data={data}
-            />
-            {/* <Card currentPosts={currentPosts} item={item} data={data} index={index} isSearch={isSearch} isLoading={isLoading} /> */}
+            <InputSearch currentPosts={currentPosts} data={data} />
             <Pagination
               postsPerPage={postsPerPage}
               totalPosts={apiData?.length}

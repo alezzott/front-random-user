@@ -4,17 +4,13 @@ import { User } from '../models/UserModel';
 
 import { Card } from './Card';
 
-export function InputSearch({ isLoading, data, index, item, currentPosts }: CardProps) {
-  const [isSearch, setIsSearch] = useState('');
+export function InputSearch({ data, currentPosts }: CardProps) {
+  const [isSearch, setIsSearch] = useState<string>('');
   const [filteredData] = useState<User[]>(data);
-
-  console.log('pesquisa', isSearch);
 
   const filtered = currentPosts.filter(({ name }: User) =>
     name.first.toLowerCase().trim().includes(isSearch)
   );
-
-  console.log('filter', filteredData);
 
   return (
     <div className="grid grid-cols-1 m/t-5 m-4 items-end">
@@ -47,10 +43,7 @@ export function InputSearch({ isLoading, data, index, item, currentPosts }: Card
             placeholder="Search"
           />
         </div>
-        <button
-          type="submit"
-          className="p-2.5 ml-2 text-sm font-medium text-white bg-gray-600 rounded-lg border border-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 "
-        >
+        <button className="p-2.5 ml-2 text-sm font-medium text-white bg-gray-600 rounded-lg border border-gray-500 ">
           <svg
             className="w-5 h-5"
             fill="none"
@@ -69,14 +62,7 @@ export function InputSearch({ isLoading, data, index, item, currentPosts }: Card
         </button>
       </form>
       <div>
-        <Card
-          data={data}
-          isSearch={isSearch}
-          item={item}
-          index={index}
-          isLoading={isLoading}
-          currentPosts={filtered}
-        />
+        <Card data={data} currentPosts={filtered} {...setIsSearch} />
       </div>
     </div>
   );

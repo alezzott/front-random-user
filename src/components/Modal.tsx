@@ -10,18 +10,8 @@ export function ModalComponent({ setShowModal, currentUser }: ModalProps) {
       >
         <section className="z-[100] md:h-auto mr-5 max-w-md  max-h-md h-full w-full ">
           <article className="border border-gray-700 bg-[#1f2937] rounded-lg shadow dark:bg-gray-700">
-            <ModalTop
-              currentUser={currentUser}
-              setShowModal={setShowModal}
-              closeDropdown={undefined}
-              refIs={undefined}
-            />
-            <ModalBody
-              currentUser={currentUser}
-              setShowModal={setShowModal}
-              closeDropdown={undefined}
-              refIs={undefined}
-            />
+            <ModalTop currentUser={currentUser} setShowModal={setShowModal} />
+            <ModalBody currentUser={currentUser} setShowModal={setShowModal} />
           </article>
         </section>
       </section>
