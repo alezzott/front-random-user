@@ -6,11 +6,15 @@ import { Card } from './Card';
 
 export function InputSearch({ data, currentPosts }: CardProps) {
   const [isSearch, setIsSearch] = useState<string>('');
-  const [filteredData] = useState<User[]>(data);
 
-  const filtered = currentPosts.filter(({ name }: User) =>
-    name.first.toLowerCase().trim().includes(isSearch)
-  );
+  const replaced = isSearch.split(' ').join('-');
+
+  const filtered = currentPosts.filter(({ name }: User) => {
+    return (
+      name.first.toLowerCase().trim().includes(isSearch) ||
+      name.last.toLowerCase().trim().includes(isSearch)
+    );
+  });
 
   return (
     <div className="grid grid-cols-1 m/t-5 m-4 items-end">
@@ -35,15 +39,19 @@ export function InputSearch({ data, currentPosts }: CardProps) {
             </svg>
           </div>
           <input
+            autoComplete="off"
             onChange={(e) => setIsSearch(e.target.value)}
-            value={isSearch}
+            value={replaced}
             name="isSearch"
             type="text"
             className="bg-[#374151] border border-[#111827] text-white text-sm rounded-lg  focus:border-gray-500 block w-full pl-10 p-2.5  "
             placeholder="Search"
           />
         </div>
-        <button className="p-2.5 ml-2 text-sm font-medium text-white bg-gray-600 rounded-lg border border-gray-500 ">
+        <button
+          disabled
+          className="p-2.5 ml-2 text-sm font-medium text-white bg-gray-600 rounded-lg border border-gray-500 "
+        >
           <svg
             className="w-5 h-5"
             fill="none"
