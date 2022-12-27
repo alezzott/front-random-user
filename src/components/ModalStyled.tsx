@@ -1,6 +1,5 @@
 import { ModalProps } from '../models/PageModel';
 import { UserCircleIcon } from '@heroicons/react/24/solid';
-import { useState } from 'react';
 
 export function ModalTop({ setShowModal }: ModalProps) {
   return (
