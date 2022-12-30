@@ -6,6 +6,7 @@ import { FormatPhone } from '../utils/format';
 import { ModalComponent } from './Modal';
 
 import { ClipboardDocumentCheckIcon } from '@heroicons/react/24/solid';
+import { Tooltip } from 'flowbite-react';
 
 export function Card({ currentPosts }: CardProps) {
   const [showModal, setShowModal] = useState(false);
@@ -51,15 +52,30 @@ export function Card({ currentPosts }: CardProps) {
                 >
                   Details
                 </button>
-                <button
-                  className="block border-solid border-2 border-slate-600 text-white bg-[#374151] hover:bg-[#111827] focus:ring-4 focus:outline-non font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                  onClick={() => {
-                    navigator.clipboard.writeText(item.name.first && item.name.last);
-                  }}>
-                  <p id="app-title" >
-                    <ClipboardDocumentCheckIcon className="h-6 w-6 text-gray-400" />
-                  </p>
-                </button>
+                <div className="flex">
+                  <Tooltip
+                    content="Copy user info"
+                    trigger="hover"
+                    animation="duration-150"
+                  >
+                    <button
+                      className="block border-solid border-2 border-slate-600 text-white bg-[#374151] hover:bg-[#111827] focus:ring-4 focus:outline-non font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                      onClick={() => {
+                        navigator.clipboard.writeText(
+                          item.location.country &&
+                            item.location.city &&
+                            item.name.first &&
+                            item.name.last &&
+                            item.email
+                        );
+                        console.log(navigator.clipboard.writeText);
+                      }}
+                    >
+                      <ClipboardDocumentCheckIcon className="h-6 w-6 text-gray-400" />
+                    </button>
+                  </Tooltip>
+                </div>
+
                 {showModal ? (
                   <ModalComponent
                     setShowModal={setShowModal}
